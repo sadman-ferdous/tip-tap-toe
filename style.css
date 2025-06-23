@@ -1,42 +1,64 @@
+/* Ensure HTML and Body take full height */
+html, body {
+    height: 100%; /* Make sure html and body take full viewport height */
+    margin: 0; /* Remove default margins */
+    padding: 0; /* Remove default paddings */
+    overflow: hidden; /* Prevent scrolling if not needed, useful for fixed layouts */
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* আরও মডার্ন ফন্ট */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    background-color: #1a1a2e; /* ডার্ক ব্যাকগ্রাউন্ড */
-    color: #e0e0e0; /* হালকা টেক্সট কালার */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex; /* Use flexbox for overall layout */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Vertically center content */
+    align-items: center; /* Horizontally center content */
+    min-height: 100vh; /* Ensure body takes at least full viewport height */
+    background-color: #1a1a2e; /* Dark background */
+    color: #e0e0e0; /* Light text color */
     transition: background-color 0.5s ease;
+    box-sizing: border-box; /* Include padding/border in element's total width and height */
 }
 
 .container {
-    background-color: #16213e; /* কন্টেইনারের জন্য একটু হালকা ডার্ক শেড */
+    background-color: #16213e; /* Container's slightly lighter dark shade */
     padding: 35px;
     border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); /* আরও গভীর শ্যাডো */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); /* Deeper shadow */
     text-align: center;
     width: 90%;
-    max-width: 450px; /* কন্টেইনারের প্রস্থ সামান্য বাড়ানো হলো */
-    border: 1px solid rgba(255, 255, 255, 0.1); /* হালকা বর্ডার */
+    max-width: 450px; /* Max width for container */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+    margin: auto; /* Use auto margin to center it within the flex container (body) */
+    display: flex; /* Make container a flex container too */
+    flex-direction: column; /* Arrange content inside container vertically */
+    align-items: center; /* Center items horizontally inside container */
+    justify-content: center; /* Vertically center items within the container itself */
+    flex-shrink: 0; /* Prevent container from shrinking if space is tight */
 }
 
 h1 {
-    color: #00bcd4; /* আকর্ষণীয় সায়ান কালার */
+    color: #00bcd4; /* Attractive cyan color */
     margin-bottom: 30px;
-    font-size: 2.5em; /* ফন্ট সাইজ সামান্য বাড়ানো */
-    text-shadow: 0 0 10px rgba(0, 188, 212, 0.5); /* টেক্সট শ্যাডো */
+    font-size: 2.5em;
+    text-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
+}
+
+.mode-selection {
+    display: flex; /* Buttons side-by-side */
+    justify-content: center;
+    flex-wrap: wrap; /* Wrap buttons on smaller screens */
+    margin-bottom: 20px;
 }
 
 .mode-selection button {
-    background-color: #4CAF50; /* সবুজ বোতাম */
+    background-color: #4CAF50; /* Green button */
     color: white;
     border: none;
-    padding: 14px 25px; /* প্যাডিং বাড়ানো */
+    padding: 14px 25px;
     margin: 10px;
-    border-radius: 8px; /* বর্ডার রেডিয়াস বাড়ানো */
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 17px; /* ফন্ট সাইজ সামান্য বাড়ানো */
+    font-size: 17px;
     font-weight: bold;
     transition: background-color 0.3s ease, transform 0.2s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -44,17 +66,17 @@ h1 {
 
 .mode-selection button:hover {
     background-color: #45a049;
-    transform: translateY(-2px); /* হোভারে সামান্য উপরে ওঠা */
+    transform: translateY(-2px);
 }
 
 .game-board {
     display: grid;
-    grid-template-columns: repeat(3, 110px); /* সেলের আকার বাড়ানো */
+    grid-template-columns: repeat(3, 110px);
     grid-template-rows: repeat(3, 110px);
-    gap: 10px; /* সেলের মধ্যে গ্যাপ বাড়ানো */
-    margin: 30px auto;
+    gap: 10px;
+    margin: 30px auto; /* Centering the grid itself */
     width: fit-content;
-    background-color: #0f3460; /* বোর্ডের ব্যাকগ্রাউন্ড */
+    background-color: #0f3460;
     border-radius: 10px;
     padding: 10px;
     box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.3);
@@ -63,16 +85,16 @@ h1 {
 .cell {
     width: 110px;
     height: 110px;
-    background-color: #2e4a6e; /* সেলের ব্যাকগ্রাউন্ড */
+    background-color: #2e4a6e;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3.5em; /* ফন্ট সাইজ আরও বাড়ানো */
+    font-size: 3.5em;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* সেলের শ্যাডো */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .cell:hover {
@@ -81,25 +103,25 @@ h1 {
 }
 
 .cell.X {
-    color: #FF6B6B; /* উজ্জ্বল লাল (X) */
+    color: #FF6B6B;
     text-shadow: 0 0 15px rgba(255, 107, 107, 0.7);
 }
 
 .cell.O {
-    color: #4ECDC4; /* টিল কালার (O) */
+    color: #4ECDC4;
     text-shadow: 0 0 15px rgba(78, 205, 196, 0.7);
 }
 
 .game-status {
     margin-top: 25px;
-    font-size: 1.5em; /* ফন্ট সাইজ বাড়ানো */
+    font-size: 1.5em;
     font-weight: bold;
-    color: #b0e0e6; /* হালকা নীল টেক্সট */
-    min-height: 1.5em; /* টেক্সটের জন্য মিনিমাম হাইট */
+    color: #b0e0e6;
+    min-height: 1.5em;
 }
 
 .restart-button {
-    background-color: #FFD700; /* গোল্ডেন কালার */
+    background-color: #FFD700;
     color: #333;
     border: none;
     padding: 12px 22px;
@@ -121,10 +143,31 @@ h1 {
     display: none;
 }
 
+/* --- Footer Styles --- */
+.footer {
+    padding: 20px;
+    background-color: #0f3460;
+    color: #a0a0a0;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+    font-size: 0.9em;
+    margin-top: auto; /* Pushes the footer to the bottom when body is a flex column */
+    /* Remove fixed position if it's there */
+    /* position: fixed; */
+    /* bottom: 0; */
+    /* left: 0; */
+}
+
+.footer p {
+    margin: 5px 0;
+}
+
 /* Responsive adjustments */
 @media (max-width: 650px) {
     .container {
         padding: 25px;
+        margin: 15px auto; /* Adjust margin for smaller screens */
     }
     .game-board {
         grid-template-columns: repeat(3, 90px);
@@ -162,8 +205,11 @@ h1 {
     h1 {
         font-size: 2em;
     }
+    .mode-selection {
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center;
+    }
     .mode-selection button {
-        flex-direction: column; /* ছোট স্ক্রিনে বাটনগুলো উল্লম্বভাবে সাজানো */
         width: 90%;
         margin: 5px auto;
     }
@@ -171,44 +217,11 @@ h1 {
         padding: 10px 18px;
         font-size: 1em;
     }
-}
 
-
-
-/* --- Footer Styles --- */
-.footer {
-    margin-top: 40px; /* Adjust spacing from the game container */
-    padding: 20px;
-    background-color: #0f3460; /* Darker background for the footer */
-    color: #a0a0a0; /* Lighter grey text */
-    text-align: center;
-    width: 100%;
-    position: absolute; /* Position the footer at the bottom */
-    bottom: 0;
-    left: 0;
-    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2); /* Shadow for a subtle lift */
-    font-size: 0.9em;
-}
-
-.footer p {
-    margin: 5px 0;
-}
-
-/* Adjust body to accommodate fixed footer */
-body {
-    min-height: 100vh; /* Ensure body takes full viewport height */
-    position: relative; /* For absolute positioning of footer */
-    padding-bottom: 100px; /* Add space at the bottom equal to footer height */
-    box-sizing: border-box; /* Include padding in element's total width and height */
-}
-
-/* Responsive adjustments for footer */
-@media (max-width: 600px) {
+    /* --- Footer Adjustment for Mobile --- */
     .footer {
-        padding: 15px;
-        font-size: 0.8em;
-    }
-    body {
-        padding-bottom: 80px; /* Adjust padding for smaller footer */
+        margin-top: 20px; /* Add some specific top margin for mobile */
+        padding: 15px; /* Adjust padding for smaller screens */
+        font-size: 0.8em; /* Smaller font size for mobile */
     }
 }
