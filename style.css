@@ -1,0 +1,214 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* আরও মডার্ন ফন্ট */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #1a1a2e; /* ডার্ক ব্যাকগ্রাউন্ড */
+    color: #e0e0e0; /* হালকা টেক্সট কালার */
+    transition: background-color 0.5s ease;
+}
+
+.container {
+    background-color: #16213e; /* কন্টেইনারের জন্য একটু হালকা ডার্ক শেড */
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); /* আরও গভীর শ্যাডো */
+    text-align: center;
+    width: 90%;
+    max-width: 450px; /* কন্টেইনারের প্রস্থ সামান্য বাড়ানো হলো */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* হালকা বর্ডার */
+}
+
+h1 {
+    color: #00bcd4; /* আকর্ষণীয় সায়ান কালার */
+    margin-bottom: 30px;
+    font-size: 2.5em; /* ফন্ট সাইজ সামান্য বাড়ানো */
+    text-shadow: 0 0 10px rgba(0, 188, 212, 0.5); /* টেক্সট শ্যাডো */
+}
+
+.mode-selection button {
+    background-color: #4CAF50; /* সবুজ বোতাম */
+    color: white;
+    border: none;
+    padding: 14px 25px; /* প্যাডিং বাড়ানো */
+    margin: 10px;
+    border-radius: 8px; /* বর্ডার রেডিয়াস বাড়ানো */
+    cursor: pointer;
+    font-size: 17px; /* ফন্ট সাইজ সামান্য বাড়ানো */
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.mode-selection button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px); /* হোভারে সামান্য উপরে ওঠা */
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 110px); /* সেলের আকার বাড়ানো */
+    grid-template-rows: repeat(3, 110px);
+    gap: 10px; /* সেলের মধ্যে গ্যাপ বাড়ানো */
+    margin: 30px auto;
+    width: fit-content;
+    background-color: #0f3460; /* বোর্ডের ব্যাকগ্রাউন্ড */
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.cell {
+    width: 110px;
+    height: 110px;
+    background-color: #2e4a6e; /* সেলের ব্যাকগ্রাউন্ড */
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.5em; /* ফন্ট সাইজ আরও বাড়ানো */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* সেলের শ্যাডো */
+}
+
+.cell:hover {
+    background-color: #3b5c82;
+    transform: scale(1.03);
+}
+
+.cell.X {
+    color: #FF6B6B; /* উজ্জ্বল লাল (X) */
+    text-shadow: 0 0 15px rgba(255, 107, 107, 0.7);
+}
+
+.cell.O {
+    color: #4ECDC4; /* টিল কালার (O) */
+    text-shadow: 0 0 15px rgba(78, 205, 196, 0.7);
+}
+
+.game-status {
+    margin-top: 25px;
+    font-size: 1.5em; /* ফন্ট সাইজ বাড়ানো */
+    font-weight: bold;
+    color: #b0e0e6; /* হালকা নীল টেক্সট */
+    min-height: 1.5em; /* টেক্সটের জন্য মিনিমাম হাইট */
+}
+
+.restart-button {
+    background-color: #FFD700; /* গোল্ডেন কালার */
+    color: #333;
+    border: none;
+    padding: 12px 22px;
+    margin-top: 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.restart-button:hover {
+    background-color: #e0b800;
+    transform: translateY(-2px);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 650px) {
+    .container {
+        padding: 25px;
+    }
+    .game-board {
+        grid-template-columns: repeat(3, 90px);
+        grid-template-rows: repeat(3, 90px);
+        gap: 8px;
+    }
+    .cell {
+        width: 90px;
+        height: 90px;
+        font-size: 3em;
+    }
+    h1 {
+        font-size: 2.2em;
+    }
+    .mode-selection button {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+    .game-status {
+        font-size: 1.3em;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-board {
+        grid-template-columns: repeat(3, 75px);
+        grid-template-rows: repeat(3, 75px);
+        gap: 6px;
+    }
+    .cell {
+        width: 75px;
+        height: 75px;
+        font-size: 2.5em;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    .mode-selection button {
+        flex-direction: column; /* ছোট স্ক্রিনে বাটনগুলো উল্লম্বভাবে সাজানো */
+        width: 90%;
+        margin: 5px auto;
+    }
+    .restart-button {
+        padding: 10px 18px;
+        font-size: 1em;
+    }
+}
+
+
+
+/* --- Footer Styles --- */
+.footer {
+    margin-top: 40px; /* Adjust spacing from the game container */
+    padding: 20px;
+    background-color: #0f3460; /* Darker background for the footer */
+    color: #a0a0a0; /* Lighter grey text */
+    text-align: center;
+    width: 100%;
+    position: absolute; /* Position the footer at the bottom */
+    bottom: 0;
+    left: 0;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2); /* Shadow for a subtle lift */
+    font-size: 0.9em;
+}
+
+.footer p {
+    margin: 5px 0;
+}
+
+/* Adjust body to accommodate fixed footer */
+body {
+    min-height: 100vh; /* Ensure body takes full viewport height */
+    position: relative; /* For absolute positioning of footer */
+    padding-bottom: 100px; /* Add space at the bottom equal to footer height */
+    box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+/* Responsive adjustments for footer */
+@media (max-width: 600px) {
+    .footer {
+        padding: 15px;
+        font-size: 0.8em;
+    }
+    body {
+        padding-bottom: 80px; /* Adjust padding for smaller footer */
+    }
+}
